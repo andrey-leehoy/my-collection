@@ -16,7 +16,13 @@ function App() {
       "/images/The_Doors_Strange_Days_1967.jpg",
       "/images/Twenty_One_Pilots_Clancy.jpg",
     ],
-    funko: ["/images/funko1.jpg"],
+    funko: [
+      "/images/funko_1.jpg",
+      "/images/funko_2.jpg",
+      "/images/funko_3.jpg",
+      "/images/funko_4.jpg",
+      "/images/funko_5.jpg",
+    ],
     lego: ["/images/lego1.jpg"],
     wishlist: ["/images/wish1.jpg"],
   } as const;
@@ -45,6 +51,13 @@ function App() {
       "ROSÉ — rosie",
       "The Doors — Strange Days 1967: A Work In Progress",
       "Twenty One Pilots — Clancy",
+    ],
+    funko: [
+      "Funko Pop 1",
+      "Funko Pop 2",
+      "Funko Pop 3",
+      "Funko Pop 4",
+      "Funko Pop 5",
     ],
   };
 
