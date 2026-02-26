@@ -272,13 +272,34 @@ body {
   }
 }
 
-/* Modal: изображение — вертикальные картинки под высоту экрана */
+/* Modal: без горизонтального скролла, картинка зафиксирована */
+.app-responsive .app-modal-overlay,
+.app-responsive .app-modal-inner {
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch;
+}
+.app-responsive .app-modal-inner {
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+}
+.app-responsive .modal-img-container {
+  overflow: hidden;
+  max-width: 100%;
+}
 .app-responsive .modal-wish-img {
   object-fit: contain;
+  max-width: 100%;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 @media (max-width: 768px) {
   .app-responsive .app-modal-inner .modal-wish-img {
     max-height: 60vh;
+  }
+  .app-responsive .modal-img-container {
+    width: 100% !important;
+    max-width: 100%;
   }
 }
 
