@@ -29,6 +29,220 @@ body {
   display: block;
 }
 
+/* Responsive CSS variables for my-collection app */
+.app-responsive {
+  --header-padding: 20px 60px;
+  --header-gap: 8px;
+  --content-padding: 60px 80px;
+  --grid-cols: 4;
+  --grid-gap: 32px;
+  --funko-cols: 4;
+  --funko-gap-x: 32px;
+  --funko-gap-y: 80px;
+  --funko-item-max-width: 280px;
+  --funko-img-width: 180px;
+  --funko-img-max-height: 240px;
+  --funko-shelf-width: 280px;
+  --funko-shelf-height: 70px;
+  --funko-label-height: 24px;
+  --wishlist-cols: 3;
+  --wishlist-gap: 24px;
+  --album-base-width: min(500px, 80vw);
+  --album-offset-pct: 40;
+  --album-view-min-height: 500px;
+  --funko-carousel-item-width: 300px;
+  --funko-carousel-img-width: 280px;
+  --funko-carousel-img-height: 400px;
+  --funko-carousel-ml: -150px;
+  --funko-shelf-glow-w: 300px;
+  --funko-shelf-glow-h: 400px;
+  --modal-flex-dir: row;
+  --modal-img-width: 55%;
+  --modal-text-width: 45%;
+  --modal-img-padding: 40px;
+  --modal-text-padding: 60px;
+  --modal-title-size: 36px;
+  --modal-price-size: 26px;
+  --modal-desc-size: 17px;
+  --modal-btn-padding: 20px 40px;
+  --modal-btn-font: 18px;
+  --nav-btn-size: 44px;
+}
+
+@media (max-width: 1024px) {
+  .app-responsive {
+    --header-padding: 16px 24px;
+    --album-base-width: min(400px, 85vw);
+    --album-view-min-height: 450px;
+    --content-padding: 40px 24px;
+    --grid-cols: 3;
+    --grid-gap: 24px;
+    --funko-cols: 3;
+    --funko-gap-x: 24px;
+    --funko-gap-y: 60px;
+    --funko-item-max-width: 220px;
+    --funko-img-width: 140px;
+    --funko-img-max-height: 180px;
+    --funko-shelf-width: 220px;
+    --funko-shelf-height: 55px;
+    --funko-label-height: 20px;
+    --wishlist-cols: 2;
+    --wishlist-gap: 20px;
+    --album-offset-pct: 35;
+    --funko-carousel-item-width: 260px;
+    --funko-carousel-img-width: 240px;
+    --funko-carousel-img-height: 340px;
+    --funko-carousel-ml: -130px;
+    --funko-shelf-glow-w: 260px;
+    --funko-shelf-glow-h: 340px;
+    --modal-text-padding: 40px;
+    --modal-title-size: 30px;
+    --modal-price-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-responsive {
+    --header-padding: 12px 16px;
+    --album-base-width: min(320px, 90vw);
+    --album-view-min-height: 400px;
+    --content-padding: 24px 16px;
+    --grid-cols: 2;
+    --grid-gap: 16px;
+    --funko-cols: 2;
+    --funko-gap-x: 16px;
+    --funko-gap-y: 40px;
+    --funko-item-max-width: 160px;
+    --funko-img-width: 110px;
+    --funko-img-max-height: 140px;
+    --funko-shelf-width: 160px;
+    --funko-shelf-height: 45px;
+    --funko-label-height: 18px;
+    --wishlist-cols: 1;
+    --wishlist-gap: 16px;
+    --album-offset-pct: 45;
+    --funko-carousel-item-width: 200px;
+    --funko-carousel-img-width: 180px;
+    --funko-carousel-img-height: 260px;
+    --funko-carousel-ml: -100px;
+    --funko-shelf-glow-w: 200px;
+    --funko-shelf-glow-h: 260px;
+    --modal-img-width: 100%;
+    --modal-text-width: 100%;
+    --modal-img-padding: 24px;
+    --modal-text-padding: 24px;
+    --modal-title-size: 24px;
+    --modal-price-size: 20px;
+    --modal-desc-size: 15px;
+    --modal-btn-padding: 16px 28px;
+    --modal-btn-font: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-responsive {
+    --header-padding: 10px 12px;
+    --album-base-width: min(280px, 95vw);
+    --album-view-min-height: 360px;
+    --content-padding: 16px 12px;
+    --grid-cols: 1;
+    --grid-gap: 12px;
+    --funko-cols: 1;
+    --funko-gap-x: 12px;
+    --funko-gap-y: 32px;
+    --funko-item-max-width: 140px;
+    --funko-img-width: 100px;
+    --funko-img-max-height: 120px;
+    --funko-shelf-width: 140px;
+    --funko-shelf-height: 40px;
+    --funko-label-height: 16px;
+    --album-offset-pct: 55;
+    --funko-carousel-item-width: 160px;
+    --funko-carousel-img-width: 140px;
+    --funko-carousel-img-height: 200px;
+    --funko-carousel-ml: -80px;
+    --funko-shelf-glow-w: 160px;
+    --funko-shelf-glow-h: 200px;
+    --modal-img-padding: 16px;
+    --modal-text-padding: 16px;
+    --modal-title-size: 20px;
+    --modal-price-size: 18px;
+    --modal-desc-size: 14px;
+    --modal-btn-padding: 14px 24px;
+    --modal-btn-font: 15px;
+    --nav-btn-size: 40px;
+  }
+}
+
+/* Header: wrap on small screens, scrollable tabs */
+@media (max-width: 768px) {
+  .app-responsive .app-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .app-responsive .app-header-tabs {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .app-responsive .app-header-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .app-responsive .app-header .app-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-responsive .app-header .app-title {
+    font-size: 1rem;
+  }
+}
+
+/* Modal: default row layout on desktop */
+.app-responsive .app-modal-inner {
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .app-responsive .app-modal-inner {
+    flex-direction: column;
+  }
+}
+
+/* Modal: scrollable content, reduce overlay padding */
+@media (max-width: 768px) {
+  .app-responsive .app-modal-overlay {
+    padding: 12px !important;
+    align-items: flex-start !important;
+  }
+  .app-responsive .app-modal-inner {
+    flex-direction: column;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .app-responsive .app-modal-inner > div:first-child {
+    min-width: 100%;
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-responsive .app-modal-overlay {
+    padding: 8px !important;
+  }
+}
+
+/* Touch-friendly: larger tap targets on mobile */
+@media (pointer: coarse) {
+  .app-responsive button {
+    min-height: 44px;
+  }
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
