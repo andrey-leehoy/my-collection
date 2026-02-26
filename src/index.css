@@ -56,6 +56,7 @@ body {
   --funko-carousel-ml: -150px;
   --funko-shelf-glow-w: 300px;
   --funko-shelf-glow-h: 400px;
+  --funko-item-height: 320px;
   --modal-flex-dir: row;
   --modal-img-width: 55%;
   --modal-text-width: 45%;
@@ -67,10 +68,12 @@ body {
   --modal-btn-padding: 20px 40px;
   --modal-btn-font: 18px;
   --nav-btn-size: 44px;
+  --card-radius: 20px;
 }
 
 @media (max-width: 1024px) {
   .app-responsive {
+    --card-radius: 16px;
     --header-padding: 16px 24px;
     --album-base-width: min(400px, 85vw);
     --album-view-min-height: 450px;
@@ -95,6 +98,7 @@ body {
     --funko-carousel-ml: -130px;
     --funko-shelf-glow-w: 260px;
     --funko-shelf-glow-h: 340px;
+    --funko-item-height: 280px;
     --modal-text-padding: 40px;
     --modal-title-size: 30px;
     --modal-price-size: 22px;
@@ -103,6 +107,7 @@ body {
 
 @media (max-width: 768px) {
   .app-responsive {
+    --card-radius: 14px;
     --header-padding: 12px 16px;
     --album-base-width: min(320px, 90vw);
     --album-view-min-height: 400px;
@@ -118,8 +123,9 @@ body {
     --funko-shelf-width: 160px;
     --funko-shelf-height: 45px;
     --funko-label-height: 18px;
-    --wishlist-cols: 1;
-    --wishlist-gap: 16px;
+    --wishlist-cols: 2;
+    --wishlist-gap: 14px;
+    --wishlist-overlay-padding: 14px;
     --album-offset-pct: 45;
     --funko-carousel-item-width: 200px;
     --funko-carousel-img-width: 180px;
@@ -127,6 +133,7 @@ body {
     --funko-carousel-ml: -100px;
     --funko-shelf-glow-w: 200px;
     --funko-shelf-glow-h: 260px;
+    --funko-item-height: 240px;
     --modal-img-width: 100%;
     --modal-text-width: 100%;
     --modal-img-padding: 24px;
@@ -141,21 +148,24 @@ body {
 
 @media (max-width: 480px) {
   .app-responsive {
+    --card-radius: 12px;
     --header-padding: 10px 12px;
     --album-base-width: min(280px, 95vw);
     --album-view-min-height: 360px;
     --content-padding: 16px 12px;
-    --grid-cols: 1;
-    --grid-gap: 12px;
-    --funko-cols: 1;
+    --grid-cols: 2;
+    --grid-gap: 10px;
+    --funko-cols: 2;
     --funko-gap-x: 12px;
-    --funko-gap-y: 32px;
+    --funko-gap-y: 24px;
     --funko-item-max-width: 140px;
-    --funko-img-width: 100px;
+    --funko-img-width: 90px;
     --funko-img-max-height: 120px;
     --funko-shelf-width: 140px;
     --funko-shelf-height: 40px;
     --funko-label-height: 16px;
+    --wishlist-gap: 10px;
+    --wishlist-overlay-padding: 12px;
     --album-offset-pct: 55;
     --funko-carousel-item-width: 160px;
     --funko-carousel-img-width: 140px;
@@ -163,6 +173,7 @@ body {
     --funko-carousel-ml: -80px;
     --funko-shelf-glow-w: 160px;
     --funko-shelf-glow-h: 200px;
+    --funko-item-height: 200px;
     --modal-img-padding: 16px;
     --modal-text-padding: 16px;
     --modal-title-size: 20px;
@@ -171,6 +182,14 @@ body {
     --modal-btn-padding: 14px 24px;
     --modal-btn-font: 15px;
     --nav-btn-size: 40px;
+  }
+}
+
+/* Tab buttons: touch-friendly padding on mobile */
+@media (max-width: 480px) {
+  .app-responsive .app-header-tabs button {
+    padding: 10px 16px !important;
+    min-height: 44px;
   }
 }
 
@@ -240,6 +259,16 @@ body {
 @media (pointer: coarse) {
   .app-responsive button {
     min-height: 44px;
+  }
+}
+
+/* Touch devices: always show card overlays (no hover on phones) */
+@media (pointer: coarse) {
+  .app-responsive .grid-card-overlay {
+    opacity: 1 !important;
+  }
+  .app-responsive .wishlist-card-overlay {
+    opacity: 1 !important;
   }
 }
 

@@ -145,7 +145,7 @@ function App() {
           const isHovered = hoveredIndex === index;
           const title = titlesMap.funko[index] || `Funko POP! ${index + 1}`;
           return (
-            <div key={index} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)} onClick={() => { setCurrentIndex(index); setViewMode("album"); }} style={{ position: "relative", width: "100%", maxWidth: "var(--funko-item-max-width)", height: "320px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", cursor: "pointer" }}>
+            <div key={index} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)} onClick={() => { setCurrentIndex(index); setViewMode("album"); }} style={{ position: "relative", width: "100%", maxWidth: "var(--funko-item-max-width)", height: "var(--funko-item-height)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", cursor: "pointer" }}>
               <div style={{ position: "absolute", top: "-80px", left: "50%", transform: "translateX(-50%)", width: "var(--funko-shelf-glow-w)", height: "var(--funko-shelf-glow-h)", background: "radial-gradient(ellipse at top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)", clipPath: "polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%)", opacity: isHovered ? 1 : 0, transition: "opacity 0.5s ease", pointerEvents: "none", zIndex: 1 }} />
               <img src={encodeURI(src)} alt={title} style={{ width: "var(--funko-img-width)", height: "auto", maxHeight: "var(--funko-img-max-height)", objectFit: "contain", zIndex: 2, transition: "all 0.4s ease", transform: isHovered ? "scale(1.08) translateY(-15px)" : "scale(1)", filter: isHovered ? "drop-shadow(0 0 25px rgba(255,255,255,0.5)) brightness(1.1)" : "brightness(0.4) grayscale(0.2)" }} />
               <div style={{ width: "var(--funko-shelf-width)", height: "var(--funko-shelf-height)", background: "#1a1a20", marginTop: "-35px", position: "relative", zIndex: 0, transform: "perspective(600px) rotateX(60deg)", boxShadow: "0 25px 50px rgba(0,0,0,0.9)", border: "1px solid rgba(255,255,255,0.05)" }}>
@@ -167,16 +167,16 @@ function App() {
         {data.wishlist.map((item, index) => {
           const isReserved = reservedWishes.includes(item.id);
           return (
-            <div key={item.id} onClick={() => setSelectedWish(item)} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)} style={{ breakInside: "avoid", marginBottom: "24px", borderRadius: "24px", overflow: "hidden", cursor: "pointer", position: "relative", transition: "all 0.3s ease", transform: hoveredIndex === index ? "scale(1.02)" : "scale(1)", boxShadow: "0 10px 30px rgba(0,0,0,0.3)", background: "#1a1a20", opacity: isReserved ? 0.4 : 1 }}>
+            <div key={item.id} className="wishlist-card" onClick={() => setSelectedWish(item)} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)} style={{ breakInside: "avoid", marginBottom: "var(--wishlist-gap)", borderRadius: "var(--card-radius)", overflow: "hidden", cursor: "pointer", position: "relative", transition: "all 0.3s ease", transform: hoveredIndex === index ? "scale(1.02)" : "scale(1)", boxShadow: "0 10px 30px rgba(0,0,0,0.3)", background: "#1a1a20", opacity: isReserved ? 0.4 : 1 }}>
               <img src={encodeURI(item.image)} alt={item.title} style={{ width: "100%", display: "block", height: "auto" }} />
               {isReserved && (
                 <div style={{ position: "absolute", top: "20px", right: "20px", background: "#fff", borderRadius: "50%", width: "32px", height: "32px", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 10px rgba(0,0,0,0.3)", zIndex: 10 }}>
                   <span style={{ color: "#000", fontSize: "18px", fontWeight: "bold" }}>✓</span>
                 </div>
               )}
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%)", opacity: hoveredIndex === index ? 1 : 0, transition: "opacity 0.3s ease", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "20px" }}>
-                <div style={{ color: "#fff", fontWeight: 600, fontSize: "16px" }}>{item.title}</div>
-                <div style={{ color: "rgba(255,255,255,0.8)", fontSize: "14px", marginTop: "4px" }}>{item.price}</div>
+              <div className="wishlist-card-overlay" style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%)", opacity: hoveredIndex === index ? 1 : 0, transition: "opacity 0.3s ease", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "var(--wishlist-overlay-padding, 20px)" }}>
+                <div style={{ color: "#fff", fontWeight: 600, fontSize: "clamp(12px, 3vw, 16px)" }}>{item.title}</div>
+                <div style={{ color: "rgba(255,255,255,0.8)", fontSize: "clamp(11px, 2.5vw, 14px)", marginTop: "4px" }}>{item.price}</div>
               </div>
             </div>
           );
@@ -217,9 +217,9 @@ function App() {
                   const title = titlesMap[activeTab]?.[index] ?? "";
                   const isHovered = hoveredIndex === index;
                   return (
-                    <div key={index} onClick={() => { setCurrentIndex(index); setViewMode("album"); }} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)} style={{ width: "100%", aspectRatio: "1/1", borderRadius: 20, overflow: "hidden", cursor: "pointer", boxShadow: "0 20px 60px rgba(0,0,0,0.5)", transition: "transform .18s ease", transform: isHovered ? "scale(1.03)" : "scale(1)", position: "relative", background: "#000" }}>
+                    <div key={index} className="grid-card" onClick={() => { setCurrentIndex(index); setViewMode("album"); }} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)} style={{ width: "100%", aspectRatio: "1/1", borderRadius: "var(--card-radius)", overflow: "hidden", cursor: "pointer", boxShadow: "0 20px 60px rgba(0,0,0,0.5)", transition: "transform .18s ease", transform: isHovered ? "scale(1.03)" : "scale(1)", position: "relative", background: "#000" }}>
                       <img src={encodeURI(src)} alt={title} style={{ width: "100%", height: "100%", objectFit: activeTab === "funko" ? "contain" : "cover" }} />
-                      <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "20%", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "8% 10%", boxSizing: "border-box", opacity: isHovered ? 1 : 0, transition: "opacity .25s ease", background: "linear-gradient(to top, rgba(0,0,0,0.8), transparent)" }}>
+                      <div className="grid-card-overlay" style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "20%", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "8% 10%", boxSizing: "border-box", opacity: isHovered ? 1 : 0, transition: "opacity .25s ease", background: "linear-gradient(to top, rgba(0,0,0,0.8), transparent)" }}>
                         {title && (() => { const parts = title.split(" — "); return (<><div style={{ color: "#fff", fontSize: 13, fontWeight: 600 }}>{parts[0]}</div>{parts[1] && <div style={{ color: "rgba(255,255,255,0.9)", fontSize: 12 }}>{parts[1]}</div>}</>); })()}
                       </div>
                     </div>
