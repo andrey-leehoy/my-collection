@@ -57,6 +57,8 @@ body {
   --funko-shelf-glow-w: 300px;
   --funko-shelf-glow-h: 400px;
   --funko-item-height: 320px;
+  --funko-img-filter: brightness(0.4) grayscale(0.2);
+  --funko-carousel-unselected-filter: brightness(0.1) grayscale(0.9) blur(2px);
   --modal-flex-dir: row;
   --modal-img-width: 55%;
   --modal-text-width: 45%;
@@ -126,7 +128,7 @@ body {
     --wishlist-cols: 2;
     --wishlist-gap: 14px;
     --wishlist-overlay-padding: 14px;
-    --album-offset-pct: 45;
+    --album-offset-pct: 38;
     --funko-carousel-item-width: 200px;
     --funko-carousel-img-width: 180px;
     --funko-carousel-img-height: 260px;
@@ -166,7 +168,7 @@ body {
     --funko-label-height: 16px;
     --wishlist-gap: 10px;
     --wishlist-overlay-padding: 12px;
-    --album-offset-pct: 55;
+    --album-offset-pct: 42;
     --funko-carousel-item-width: 160px;
     --funko-carousel-img-width: 140px;
     --funko-carousel-img-height: 200px;
@@ -255,11 +257,34 @@ body {
   }
 }
 
+/* Touch: Funko — равномерное освещение (без резкого затемнения) */
+@media (pointer: coarse) {
+  .app-responsive {
+    --funko-img-filter: brightness(0.85) grayscale(0.05);
+    --funko-carousel-unselected-filter: brightness(0.5) grayscale(0.3);
+  }
+}
+
 /* Touch-friendly: larger tap targets on mobile */
 @media (pointer: coarse) {
   .app-responsive button {
     min-height: 44px;
   }
+}
+
+/* Modal: изображение — вертикальные картинки под высоту экрана */
+.app-responsive .modal-wish-img {
+  object-fit: contain;
+}
+@media (max-width: 768px) {
+  .app-responsive .app-modal-inner .modal-wish-img {
+    max-height: 60vh;
+  }
+}
+
+/* Prevent horizontal page scroll on mobile */
+.app-responsive {
+  overflow-x: hidden;
 }
 
 /* Touch devices: always show card overlays (no hover on phones) */
